@@ -1,0 +1,116 @@
+body {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+div {
+	width: 100%;
+	display: inline-block;
+	position: relative;
+}
+h1 {
+	width: 260px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: #ffdef8;
+}
+#gameSet {
+	background-color: #cfbfff;
+	border: 1px solid black;
+	padding: 2px;
+	width: 450px;
+	margin-bottom: 20px;
+}
+.pileID1 {
+	background-color: #ffdef8;
+	font-size: 22px;
+}
+.pileID2 {
+	background-color: #cfbfff;
+	font-size: 22px;
+}
+.showSetup{
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.hideSetup{
+	pointer-events: none;
+	opacity: 0.4;
+}
+#set1 {
+	height: auto;
+	width: 33%;
+}
+#set2 {
+	height: auto;
+	width: 33%;
+}
+#set3 {
+	height: auto;
+	width: 33%;
+}
+.rockPiles {
+	border-top: 20px;
+}
+#pile1 {
+	height: 160px;
+	width: 33%;
+	background-color: #cfbfff;
+}
+#pile2 {
+	height: 160px;
+	width: 33%;
+	background-color: #ffdef8;
+}
+#pile3 {
+	height: 160px;
+	width: 33%;
+	background-color: #cfbfff;
+}
+#start{
+	margin: 5px;
+}
+h2 {
+	margin-left: auto;
+	margin-right: auto;
+}
+.rockUnsel {
+	opacity: 1;
+}
+.rockSel {
+	opacity: 0.7;
+	border: 1px dashed black;
+}
+.rockPicked {
+	opacity: 0;
+}
+
+.setGame {
+	height: 30px;
+	width: 80px;
+	background-color: #ffbfdf;
+}
+.setInput {
+	height: 30px;
+	width: 80px;
+	text-align: center;
+	font-size: 11;
+}
+#plyr1 {
+	border: 1px solid #ff4c79;
+	height: 150px;
+	width: 25%;
+	margin-right: 100px;
+}
+#plyr2 {
+	border: 1px solid #ff4c79;
+	height: 150px;
+	width: 25%;
+}
+button {
+	height: 40px;
+	width: 100px;
+}

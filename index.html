@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+	Author: Jim Osborn
+	Date: Summer 2016
+	Version: Initial
+	Purpose: Nim strategy game
+	
+	Copyright: This work is the intellectual property of Jim Osborn. Any further copying and distribution 
+		outside of class must be within the copyright law. Posting to commercial sites for profit is prohibited.
+	
+	Description: 2-player game with 3 piles of rocks; users take turns removing rocks from one pile - player that removes the
+				 last rock wins the game.
+-->      
+<header>
+	<title>Nim Game</title>
+	<meta charset="utf-8">
+	<link href="styles/nim_stylesheet.css"
+		type="text/css"
+		rel="stylesheet"
+		media="screen" />
+</header>
+<body>
+	<h1>Traditional Nim</h1>
+	<hr>
+	<h2>Players alternate turns to remove rocks from the piles.</br>
+		The player that removes the last one wins the game.</h2>
+	<div id="gameSet" class="showSetup">
+		<form name="pickRules">
+			Maximum rocks per turn:
+			<input class="setInput" id="maxNum" type="number" name="maxNum" min="1" max="5" step="1" value="3">
+			</br>
+			Players can pick from:
+			<input type="radio" name="pileSels" value="One" checked>One only
+			<input type="radio" id="pickAny" name="pileSels" value="All">Any pile<br>
+			</br></br>
+		</form>
+	</div>
+	<div id="setRocks" class="showSetup">
+		<div id="set1">
+			<form name="rockPile1">
+				<span class="pileID1">Pile 1</span> starts with:
+				<input class="setInput" id="numRock1" type="number" name="rocks1" min="1" max="15" step="1" value="5">
+				rocks
+			</form>
+		</div>
+		<div id="set2">
+			<form>
+				<span class="pileID2">Pile 2</span> starts with:
+				<input class="setInput" id="numRock2" type="number" name="rocks2" min="1" max="15" step="1" value="5">
+				rocks
+			</form>
+		</div>
+		<div id="set3">
+			<form>
+				<span class="pileID1">Pile 3</span> starts with:
+				<input class="setInput" id="numRock3" type="number" name="rocks3" min="1" max="15" step="1" value="5">
+				rocks
+			</form>
+		</div>
+	</div>
+	<div class="rockPiles">
+		<div id="pile1" class="piles">
+		</div>
+		<div id="pile2" class="piles">
+		</div>
+		<div id="pile3" class="piles">
+		</div>
+	</div>
+
+	<button id="start">Start Game</button>
+
+	<div class="controls">
+		<div id="plyr1">
+			<h2>Player 1</h2>
+			<button id="plyr1_btn">Select</button>
+		</div>
+		<div id="plyr2">			
+			<h2>Player 2</h2>
+			<button id="plyr2_btn">Waiting</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="scripts/nim_run.js"></script>  
+</body>
+</html>
