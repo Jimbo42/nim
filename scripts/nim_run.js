@@ -6,11 +6,11 @@ function nimMain() {
 	// variables for game control
 	var maxSelect = 3;
 	var pickAny = false;
-	var startPlayer = "plyr1";
+	var startPlayer = "Player1";
 
 	// set the player button controls - initial state is disabled
-	document.getElementById("plyr1_btn").disabled = true;
-	document.getElementById("plyr2_btn").disabled = true;
+	//document.getElementById("Player1_btn").disabled = true;
+	//document.getElementById("Player2_btn").disabled = true;
 	
 	// set the action for the Start Game button
 	document.getElementById("start").addEventListener("click", function() {
@@ -26,8 +26,8 @@ function nimMain() {
 			for ( var i = 0; i < numRocks; i++ ) {
 				var img = document.createElement("img");
 				img.setAttribute("src", "images/rock.png");
-				img.setAttribute("width", "80px");
-				img.setAttribute("height", "50px");
+				img.setAttribute("width", "72px");
+				img.setAttribute("height", "45px");
 				img.setAttribute("class", "rockUnsel");
 				img.addEventListener("click", function() {
 					toggleSelectRock(this);
@@ -36,10 +36,12 @@ function nimMain() {
 			}
 		}
 		// disable game set areas and enable first player button
-		this.disabled = true;
-		document.getElementById("gameSet").className = "hideSetup";
-		document.getElementById("setRocks").className = "hideSetup";
-		document.getElementById("plyr1_btn").disabled = false;
+		var setDivs = document.getElementsByClassName("showSetup");
+		var numDivs = setDivs.length;
+		for (var i=0; i < numDivs; i++) {
+			setDivs[0].className = "hideSetup";
+		}
+		document.getElementById(startPlayer).className = "active";
 	});
 	
 	function toggleSelectRock( rockImg ) {
@@ -77,10 +79,10 @@ function nimMain() {
 	}
 	
 	// set the removal of rocks event for both buttons
-	document.getElementById("plyr1_btn").addEventListener("click", function() {
+	document.getElementById("Player1_btn").addEventListener("click", function() {
 		pickRocks("Player1");
 	});
-	document.getElementById("plyr2_btn").addEventListener("click", function() {
+	document.getElementById("Player2_btn").addEventListener("click", function() {
 		pickRocks("Player2");
 	});
 	
@@ -103,22 +105,40 @@ function nimMain() {
 			// Player didn't pick
 		} else if (totalRocks==0) {
 			// Player wins
+			declareWinner(playerNum);
 		} else {
 			// switch to other player
 			if (playerNum == "Player1") {
-				document.getElementById("plyr1_btn").disabled = true;
-				document.getElementById("plyr1_btn").innerHTML = "Waiting";
-				document.getElementById("plyr2_btn").disabled = false;
-				document.getElementById("plyr2_btn").innerHTML = "Select";
+				document.getElementById("Player1").className = "inactive";
+				document.getElementById("Player2").className = "active";
 			} else {
-				document.getElementById("plyr2_btn").disabled = true;
-				document.getElementById("plyr2_btn").innerHTML = "Waiting";
-				document.getElementById("plyr1_btn").disabled = false;
-				document.getElementById("plyr1_btn").innerHTML = "Select";
+				document.getElementById("Player1").className = "active";
+				document.getElementById("Player2").className = "inactive";
 			}
 			
 		}
 	}
 	
+	function declareWinner( playerNum ) {
+		// add a "counter" rock into their pile for keeping tabs
+		var img = document.createElement("img");
+		img.setAttribute("src", "images/rock.png");
+		img.setAttribute("width", "40px");
+		img.setAttribute("height", "25px");
+		document.getElementById(playerNum).appendChild(img);
+		// reset the game for next round
+		document.getElementById("Player1").className = "inactive";
+		document.getElementById("Player2").className = "inactive";
+		if (playerNum == "Player1") {
+			startPlayer = "Player2";
+		} else {
+			startPlayer = "Player1";
+		}
+		var setDivs = document.getElementsByClassName("hideSetup");
+		var numDivs = setDivs.length;
+		for (var i=0; i < numDivs; i++) {
+			setDivs[0].className = "showSetup";
+		}
+	}
 
 }

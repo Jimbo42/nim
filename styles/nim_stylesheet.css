@@ -1,5 +1,5 @@
 body {
-	width: 100%;
+	min-width: 1360px;
 	margin: 0 auto;
 	padding: 0;
 	text-align: center;
@@ -23,14 +23,15 @@ h1 {
 	padding: 2px;
 	width: 450px;
 	margin-bottom: 20px;
+	margin-left: 450px;
+	float: left;
 }
-.pileID1 {
-	background-color: #ffdef8;
-	font-size: 22px;
+#start{
+	margin: 5px;
 }
-.pileID2 {
-	background-color: #cfbfff;
-	font-size: 22px;
+h2 {
+	margin-left: auto;
+	margin-right: auto;
 }
 .showSetup{
 	display: inline-block;
@@ -40,42 +41,28 @@ h1 {
 	pointer-events: none;
 	opacity: 0.4;
 }
-#set1 {
-	height: auto;
-	width: 33%;
-}
-#set2 {
-	height: auto;
-	width: 33%;
-}
-#set3 {
-	height: auto;
-	width: 33%;
-}
 .rockPiles {
 	border-top: 20px;
 }
 #pile1 {
 	height: 160px;
-	width: 33%;
+	width: 450px;
 	background-color: #cfbfff;
+	float: left;
 }
 #pile2 {
 	height: 160px;
-	width: 33%;
+	width: 450px;
 	background-color: #ffdef8;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 #pile3 {
 	height: 160px;
-	width: 33%;
+	width: 450px;
 	background-color: #cfbfff;
-}
-#start{
-	margin: 5px;
-}
-h2 {
-	margin-left: auto;
-	margin-right: auto;
+	float: left;
 }
 .rockUnsel {
 	opacity: 1;
@@ -84,31 +71,44 @@ h2 {
 	opacity: 0.7;
 	border: 1px dashed black;
 }
-.rockPicked {
-	opacity: 0;
-}
-
-.setGame {
-	height: 30px;
-	width: 80px;
-	background-color: #ffbfdf;
-}
 .setInput {
 	height: 30px;
 	width: 80px;
 	text-align: center;
 	font-size: 11;
 }
-#plyr1 {
-	border: 1px solid #ff4c79;
-	height: 150px;
-	width: 25%;
-	margin-right: 100px;
+.inactive {
+	border: 1px solid #eeeeee;
+	margin-top: 10px;
+	opacity: 0.4;
+	pointer-events: none;
 }
-#plyr2 {
-	border: 1px solid #ff4c79;
+.active {
+	margin-top: 10px;
+	outline: 6px dashed #cfbfff;
+	box-shadow: 0 0 0 6px #ffdef8;
+	animation: 1s animateBorder infinite;
+}
+@keyframes animateBorder {
+	to {
+		outline-color: #ffdef8;
+		box-shadow: 0 0 0 6px #cfbfff;
+	}
+}
+
+#Player1 {
 	height: 150px;
-	width: 25%;
+	width: 300px;
+	margin-left: 300px;
+	padding: 10px;
+	float: left;
+}
+#Player2 {
+	height: 150px;
+	width: 300px;
+	margin-left: 200px;
+	padding: 10px;
+	float: left;
 }
 button {
 	height: 40px;

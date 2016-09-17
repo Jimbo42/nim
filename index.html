@@ -32,53 +32,51 @@
 			Players can pick from:
 			<input type="radio" name="pileSels" value="One" checked>One only
 			<input type="radio" id="pickAny" name="pileSels" value="All">Any pile<br>
-			</br></br>
+			</br>
+			Select numbers of rocks in each pile below
 		</form>
+		<button id="start">Start Game</button>
 	</div>
-	<div id="setRocks" class="showSetup">
-		<div id="set1">
-			<form name="rockPile1">
-				<span class="pileID1">Pile 1</span> starts with:
-				<input class="setInput" id="numRock1" type="number" name="rocks1" min="1" max="15" step="1" value="5">
-				rocks
-			</form>
-		</div>
-		<div id="set2">
-			<form>
-				<span class="pileID2">Pile 2</span> starts with:
-				<input class="setInput" id="numRock2" type="number" name="rocks2" min="1" max="15" step="1" value="5">
-				rocks
-			</form>
-		</div>
-		<div id="set3">
-			<form>
-				<span class="pileID1">Pile 3</span> starts with:
-				<input class="setInput" id="numRock3" type="number" name="rocks3" min="1" max="15" step="1" value="5">
-				rocks
-			</form>
-		</div>
-	</div>
-	<div class="rockPiles">
+
+ 	<div class="rockPiles">
 		<div id="pile1" class="piles">
+			<div id="set1" class="showSetup">
+				<form name="rockPile1">
+					Pile 1 starts with:
+					<input id="numRock1" type="number" name="rocks1" min="1" max="12" step="1" value="5">
+					rocks
+				</form>
+			</div>
 		</div>
 		<div id="pile2" class="piles">
+			<div id="set2" class="showSetup">
+				<form name="rockPile2">
+					Pile 2 starts with:
+					<input id="numRock2" type="number" name="rocks2" min="1" max="12" step="1" value="5">
+					rocks
+				</form>
+			</div>
 		</div>
 		<div id="pile3" class="piles">
+			<div id="set3" class="showSetup">
+				<form name="rockPile3">
+					Pile 3 starts with:
+					<input id="numRock3" type="number" name="rocks3" min="1" max="12" step="1" value="5">
+					rocks
+				</form>
+			</div>
 		</div>
 	</div>
 
-	<button id="start">Start Game</button>
-
-	<div class="controls">
-		<div id="plyr1">
-			<h2>Player 1</h2>
-			<button id="plyr1_btn">Select</button>
-		</div>
-		<div id="plyr2">			
-			<h2>Player 2</h2>
-			<button id="plyr2_btn">Waiting</button>
-		</div>
+	<div id="Player1" class="inactive">
+		<button id="Player1_btn">Player 1</button>
+		<p></p>
 	</div>
+	<div id="Player2" class="inactive">			
+		<button id="Player2_btn">Player 2</button>
+		<p></p>
+	</div>
+
 	<script type="text/javascript" src="scripts/nim_run.js"></script>  
 </body>
 </html>
