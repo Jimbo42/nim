@@ -33,6 +33,9 @@ h2 {
 	margin-left: auto;
 	margin-right: auto;
 }
+.setRocks {
+	background-color: white;
+}
 .showSetup{
 	display: inline-block;
 	margin-bottom: 10px;

@@ -9,8 +9,6 @@ function nimMain() {
 	var startPlayer = "Player1";
 
 	// set the player button controls - initial state is disabled
-	//document.getElementById("Player1_btn").disabled = true;
-	//document.getElementById("Player2_btn").disabled = true;
 	
 	// set the action for the Start Game button
 	document.getElementById("start").addEventListener("click", function() {
@@ -20,7 +18,12 @@ function nimMain() {
 		
 		// set the rock piles up
 		for (var p=1; p<4; p++) {
+			// get the number of rocks and reset to within range if needed
 			var numRocks = document.getElementById("numRock"+p).value;
+			numRocks = Math.min( numRocks, 12 );
+			numRocks = Math.max( numRocks, 1 );
+			document.getElementById("numRock"+p).value = numRocks;
+			
 			var divPile = document.getElementById("pile"+p);
 			var rockPile = divPile.getElementsByTagName("img");
 			for ( var i = 0; i < numRocks; i++ ) {
@@ -41,6 +44,7 @@ function nimMain() {
 		for (var i=0; i < numDivs; i++) {
 			setDivs[0].className = "hideSetup";
 		}
+		document.getElementById(startPlayer+"_btn").innerHTML = "Selecting";
 		document.getElementById(startPlayer).className = "active";
 	});
 	
@@ -109,9 +113,13 @@ function nimMain() {
 		} else {
 			// switch to other player
 			if (playerNum == "Player1") {
+				document.getElementById("Player1_btn").innerHTML = "Waiting";
+				document.getElementById("Player2_btn").innerHTML = "Selecting";
 				document.getElementById("Player1").className = "inactive";
 				document.getElementById("Player2").className = "active";
 			} else {
+				document.getElementById("Player1_btn").innerHTML = "Selecting";
+				document.getElementById("Player2_btn").innerHTML = "Waiting";
 				document.getElementById("Player1").className = "active";
 				document.getElementById("Player2").className = "inactive";
 			}
@@ -125,19 +133,27 @@ function nimMain() {
 		img.setAttribute("src", "images/rock.png");
 		img.setAttribute("width", "40px");
 		img.setAttribute("height", "25px");
-		document.getElementById(playerNum).appendChild(img);
-		// reset the game for next round
-		document.getElementById("Player1").className = "inactive";
-		document.getElementById("Player2").className = "inactive";
-		if (playerNum == "Player1") {
-			startPlayer = "Player2";
+		var winDiv = document.getElementById(playerNum);
+		winDiv.appendChild(img);
+		
+		// Check for the accumulation - first one to seven wins
+		var numRocks = winDiv.getElementsByTagName("img").length;
+		if (numRocks < 7) {
+			// reset the game for next round
+			document.getElementById("Player1").className = "inactive";
+			document.getElementById("Player2").className = "inactive";
+			if (playerNum == "Player1") {
+				startPlayer = "Player2";
+			} else {
+				startPlayer = "Player1";
+			}
+			var setDivs = document.getElementsByClassName("hideSetup");
+			var numDivs = setDivs.length;
+			for (var i=0; i < numDivs; i++) {
+				setDivs[0].className = "showSetup";
+			}
 		} else {
-			startPlayer = "Player1";
-		}
-		var setDivs = document.getElementsByClassName("hideSetup");
-		var numDivs = setDivs.length;
-		for (var i=0; i < numDivs; i++) {
-			setDivs[0].className = "showSetup";
+			document.getElementById(playerNum+"_btn").innerHTML = "WINNER";
 		}
 	}
 
